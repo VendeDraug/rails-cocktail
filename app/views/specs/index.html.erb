@@ -1,0 +1,16 @@
+<div class="wrapper">
+  <div class="container">
+    <h1 style="margin-top: 100px">All specs</h1>
+    <div class="row specs-row">
+      <% @specs.each do |spec| %>
+      <div class="col-xs-12 col-sm-6">
+        <%= link_to spec_path(spec) do %>
+          <h2><%= spec.title %></h2>
+        <% end %>
+        <p><%= spec.description %></p>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
