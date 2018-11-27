@@ -15,10 +15,10 @@
               <h3><%= tag %></h3>
               <p>
               <% @tags = Tag.where(name: tag) %>
+                  <% raise %>
               <% @tags.each do |t| %>
                 <% t.specs.each do |spec| %>
-                  <p><%= spec.title if spec.tags.first.name == tag %></p>
-                  <%# raise %>
+                  <p><%= link_to "#{spec.title}", spec_path(spec)%></p>
                 <% end %>
               <% end %>
               </p>
