@@ -15,16 +15,19 @@ user1 = User.create!(
   password: "123456"
 )
 
-spec1 = Spec.new(
-  title: 'Building CRUD routes',
-  description: 'Morgan is learning how to do basic CRUD actions again...',
-)
-spec1.user = user1
-spec1.save!
-
 tag1 = Tag.create!(
   name: "test"
 )
+
+spec1 = Spec.new(
+  title: 'Building CRUD routes',
+  description: 'Morgan is learning how to do basic CRUD actions again...',
+  date: Date.today
+)
+spec1.user = user1
+# spec1.tag_list = tag1
+spec1.save!
+
 
 tagging1 = Tagging.create!(
   tag: tag1,

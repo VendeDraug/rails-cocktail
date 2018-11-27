@@ -19,7 +19,11 @@
               <h3><%= spec.title %></h3>
             <% end %>
             <p><%= spec.description %></p>
-            <p>Tags: <%= raw spec.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></p>
+            <%# raise %>
+            <p>Tags:</p>
+              <% spec.tags.map(&:name).first.gsub(/\s+/m, ' ').strip.split(" ").each do |t|%>
+                #<%= t %>
+              <% end %>
             <p><%= spec.updated_at %></p>
           </div>
         <% end %>

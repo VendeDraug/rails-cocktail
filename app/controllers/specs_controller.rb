@@ -18,6 +18,8 @@ class SpecsController < ApplicationController
 
   def create
     @spec = Spec.new(spec_params)
+    @spec.user = current_user
+    @spec.date = Date.today
     if @spec.save
       redirect_to specs_path, notice: 'Spec created!'
     else
@@ -30,7 +32,7 @@ class SpecsController < ApplicationController
 
   def update
     if @spec.update(spec_params)
-      edirect_to spec_path(@spec), notice: 'Spec updated!'
+      redirect_to spec_path(@spec), notice: 'Spec updated!'
     else
       render :edit
     end
@@ -47,6 +49,6 @@ class SpecsController < ApplicationController
   end
 
   def spec_params
-    params.require(:spec).permit(:title, :description, :tag_list)
+    params.require(:spec).permit(:title, :description, :tag_list, :user_id)
   end
 end
