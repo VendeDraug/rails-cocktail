@@ -2,7 +2,7 @@
   <div class="container">
     <h1 style="margin-top: 100px">All tags</h1>
     <div class="row specs-row">
-      <% if @tags.first.nil? %>
+      <% if @all_tags.first.nil? %>
         <h3>No updates yet!</h3>
       <% else %>
       <!-- <div id="tag_cloud"> -->
@@ -13,9 +13,14 @@
         <% @sorted_tags.each do |tag| %>
           <div class="col-xs-12 col-sm-6">
               <h3><%= tag %></h3>
-              <p> <% @tags.where(name: tag).each do |t| %>
-                    <%= t.id %>
-                  <% end %>
+              <p>
+              <% @tags = Tag.where(name: tag) %>
+              <% @tags.each do |t| %>
+                <% t.specs.each do |spec| %>
+                  <p><%= spec.title if spec.tags.first.name == tag %></p>
+                  <%# raise %>
+                <% end %>
+              <% end %>
               </p>
           </div>
         <% end %>
@@ -23,4 +28,3 @@
     </div>
   </div>
 </div>
-

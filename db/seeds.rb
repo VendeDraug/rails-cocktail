@@ -34,4 +34,52 @@ tagging1 = Tagging.create!(
   spec: spec1
 )
 
+user2 = User.create!(
+  email: "test1@test.com",
+  password: "123456"
+)
+
+tag2 = Tag.create!(
+  name: "tags"
+)
+
+spec2 = Spec.new(
+  title: 'Testing tags',
+  description: 'Morgan is learning how to FILTER...',
+  date: Date.today
+)
+spec2.user = user2
+# spec2.tags = tag2
+spec2.save!
+
+
+tagging2 = Tagging.create!(
+  tag: tag2,
+  spec: spec2
+)
+
+user3 = User.create!(
+  email: "test2@test.com",
+  password: "123456"
+)
+
+tag3 = Tag.create!(
+  name: "tags"
+)
+
+spec3 = Spec.new(
+  title: 'Another test',
+  description: 'Morgan is learning slowly ... very slowly...',
+  date: Date.today
+)
+spec3.user = user3
+# spec3.tags = tag3
+spec3.save!
+
+
+tagging3 = Tagging.create!(
+  tag: tag3,
+  spec: spec3
+)
+
 puts "All done!"
