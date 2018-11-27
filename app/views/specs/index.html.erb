@@ -5,6 +5,11 @@
       <% if @specs.first.nil? %>
         <h3>No updates yet!</h3>
       <% else %>
+      <!-- <div id="tag_cloud"> -->
+        <%# tag_cloud Article.tag_counts, %w[s m l] do |tag, css_class| %>
+          <%#= link_to tag.name, tag_path(tag.name), class: css_class %>
+        <%# end %>
+      <!-- </div> -->
         <% @specs.order(updated_at: :desc).each do |spec| %>
           <div class="col-xs-12 col-sm-6">
             <%# unless Time.now.strftime("%A %d") == spec.updated_at.strftime("%A %d") %>
@@ -14,7 +19,7 @@
               <h3><%= spec.title %></h3>
             <% end %>
             <p><%= spec.description %></p>
-            <p><%= spec.tags %></p>
+            <p>Tags: <%= raw spec.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></p>
             <p><%= spec.updated_at %></p>
           </div>
         <% end %>

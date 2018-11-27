@@ -4,7 +4,7 @@
       <% if @spec.errors.any? %>
         <div class="alert alert-warning alert-dismissible">
           <% @spec.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
+            <ul><%= message %></ul>
           <% end %>
         </div>
       <% end %>
@@ -12,8 +12,6 @@
       <%= f.text_field :title %>
       <%= f.label :description, "Enter a short description" %>
       <%= f.text_field :description %>
-      <%= f.label :tags, "Give it some tags!" %>
-      <%= f.text_field :tags %>
       <%= f.submit %>
     <% end %>
   </div>

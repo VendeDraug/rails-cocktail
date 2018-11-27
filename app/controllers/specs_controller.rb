@@ -2,7 +2,11 @@ class SpecsController < ApplicationController
   before_action :set_spec, only: [:show, :edit, :update, :destroy]
 
   def index
-    @specs = Spec.all
+    @articles = if params[:tag]
+      Article.tagged_with(params[:tag])
+    else
+      @specs = Spec.all
+    end
   end
 
   def show
@@ -13,9 +17,8 @@ class SpecsController < ApplicationController
   end
 
   def create
-    @spec = Spec.new(spec_params)
     if @spec.save
-      redirect_to specs_path
+      redirect_to specs_path, notice: 'Spec created!'
     else
       render :new
     end
@@ -25,8 +28,11 @@ class SpecsController < ApplicationController
   end
 
   def update
-    @spec.update(spec_params)
-    redirect_to spec_path(@spec)
+    if @spec.update(spec_params)
+      edirect_to spec_path(@spec), notice: 'Spec updated!'
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -40,6 +46,6 @@ class SpecsController < ApplicationController
   end
 
   def spec_params
-    params.require(:spec).permit(:title, :description, :tags)
+    params.require(:spec).permit(:title, :description)
   end
 end

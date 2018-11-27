@@ -7,10 +7,18 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Spec.destroy_all
 
-Spec.create!(
+spec1 = Spec.create!(
   title: 'Building CRUD routes',
   description: 'Morgan is learning how to do basic CRUD actions again...',
-  tags: "#CRUD"
+)
+
+tag1 = Tag.create!(
+  name: "test"
+)
+
+tagging1 = Tagging.create!(
+  tag: tag1,
+  spec: spec1
 )
 
 puts "All done!"
