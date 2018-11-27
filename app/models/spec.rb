@@ -6,6 +6,8 @@ class Spec < ApplicationRecord
 
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
+  belongs_to :user
+  validates_uniqueness_of :title, scope: [:created_at, :updated_at, :user]
 
   def tagged_with(name)
     Tag.find_by!(name: name).specs

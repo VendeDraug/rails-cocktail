@@ -6,11 +6,21 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Spec.destroy_all
+Tag.destroy_all
+Tagging.destroy_all
+User.destroy_all
 
-spec1 = Spec.create!(
+user1 = User.create!(
+  email: "test@test.com",
+  password: "123456"
+)
+
+spec1 = Spec.new(
   title: 'Building CRUD routes',
   description: 'Morgan is learning how to do basic CRUD actions again...',
 )
+spec1.user = user1
+spec1.save!
 
 tag1 = Tag.create!(
   name: "test"
