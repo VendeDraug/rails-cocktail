@@ -4,14 +4,14 @@ class Spec < ApplicationRecord
   #validates :tags, presence: true
   #validates :tags, format: { without: /['\/~`\!@#\$%\^&\*\(\)_\-\+=\{\}\[\]\|;:"\<\>,\.\?\\]/, message: ": Cannot contain special characters" }
 
-  has_many :taggings
+  has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
 
-  def self.tagged_with(name)
+  def tagged_with(name)
     Tag.find_by!(name: name).specs
   end
 
-  def self.tag_counts
+  def tag_counts
     Tag.select('tags.*, count(taggings.tag_id) as count').joins(:taggings).group('taggings.tag_id')
   end
 

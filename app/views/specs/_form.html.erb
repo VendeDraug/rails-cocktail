@@ -10,8 +10,13 @@
       <% end %>
       <%= f.label :title, "Enter a title" %>
       <%= f.text_field :title %>
+      <br>
       <%= f.label :description, "Enter a short description" %>
       <%= f.text_field :description %>
+      <br>
+      <%= f.label :tag_list, "Tags (separated by commas)" %>
+      <%= f.text_field :tag_list %>
+      <br>
       <%= f.submit %>
     <% end %>
   </div>

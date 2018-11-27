@@ -2,8 +2,8 @@ class SpecsController < ApplicationController
   before_action :set_spec, only: [:show, :edit, :update, :destroy]
 
   def index
-    @articles = if params[:tag]
-      Article.tagged_with(params[:tag])
+    @specs = if params[:tag]
+      Spec.tagged_with(params[:tag])
     else
       @specs = Spec.all
     end
@@ -17,6 +17,7 @@ class SpecsController < ApplicationController
   end
 
   def create
+    @spec = Spec.new(spec_params)
     if @spec.save
       redirect_to specs_path, notice: 'Spec created!'
     else
@@ -46,6 +47,6 @@ class SpecsController < ApplicationController
   end
 
   def spec_params
-    params.require(:spec).permit(:title, :description)
+    params.require(:spec).permit(:title, :description, :tag_list)
   end
 end
