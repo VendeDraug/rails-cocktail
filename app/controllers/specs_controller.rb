@@ -40,6 +40,6 @@ class SpecsController < ApplicationController
   end
 
   def spec_params
-    params.require(:spec).permit(:title, :description)
+    params.require(:spec).permit(:title, :description, :tags)
   end
 end

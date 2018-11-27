@@ -2,13 +2,22 @@
   <div class="container">
     <h1 style="margin-top: 100px">All specs</h1>
     <div class="row specs-row">
-      <% @specs.each do |spec| %>
-      <div class="col-xs-12 col-sm-6">
-        <%= link_to spec_path(spec) do %>
-          <h2><%= spec.title %></h2>
+      <% if @specs.first.nil? %>
+        <h3>No updates yet!</h3>
+      <% else %>
+        <% @specs.order(updated_at: :desc).each do |spec| %>
+          <div class="col-xs-12 col-sm-6">
+            <%# unless Time.now.strftime("%A %d") == spec.updated_at.strftime("%A %d") %>
+              <h2><%#= spec.updated_at.strftime("%A %d") %></h2>
+            <%# end %>
+            <%= link_to spec_path(spec) do %>
+              <h3><%= spec.title %></h3>
+            <% end %>
+            <p><%= spec.description %></p>
+            <p><%= spec.tags %></p>
+            <p><%= spec.updated_at %></p>
+          </div>
         <% end %>
-        <p><%= spec.description %></p>
-      </div>
       <% end %>
     </div>
   </div>

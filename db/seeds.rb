@@ -5,9 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Spec.destroy_all
 
 Spec.create!(
   title: 'Building CRUD routes',
   description: 'Morgan is learning how to do basic CRUD actions again...',
-  stars: 3
+  tags: "#CRUD"
 )
+
+puts "All done!"
