@@ -1,0 +1,25 @@
+<div class="wrapper">
+  <div class="container">
+    <h1 style="margin-top: 100px">All tags</h1>
+    <div class="row specs-row">
+      <% if @tags.first.nil? %>
+        <h3>No updates yet!</h3>
+      <% else %>
+      <!-- <div id="tag_cloud"> -->
+        <%# tag_cloud Article.tag_counts, %w[s m l] do |tag, css_class| %>
+          <%#= link_to tag.name, tag_path(tag.name), class: css_class %>
+        <%# end %>
+      <!-- </div> -->
+        <% @tags.order(updated_at: :desc).each do |tag| %>
+          <div class="col-xs-12 col-sm-6">
+            <%# unless Time.now.strftime("%A %d") == spec.updated_at.strftime("%A %d") %>
+              <h2><%#= spec.updated_at.strftime("%A %d") %></h2>
+            <%# end %>
+              <h3><%= tag.name %></h3>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+

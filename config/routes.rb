@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'pages#home'
+  root to: 'specs#index'
 
   resources :specs
   # get "specs", to: "specs#index"
@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   # get "specs/:id/edit", to: "specs#edit"
   # patch "specs/:id", to: "specs#update"
   # delete "specs/:id", to: "specs#destroy"
+  get 'tags', to: "tags#index"
   get 'tags/:tag', to: 'specs#index', as: :tag
 
 end
