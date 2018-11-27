@@ -10,12 +10,13 @@
           <%#= link_to tag.name, tag_path(tag.name), class: css_class %>
         <%# end %>
       <!-- </div> -->
-        <% @tags.order(updated_at: :desc).each do |tag| %>
+        <% @sorted_tags.each do |tag| %>
           <div class="col-xs-12 col-sm-6">
-            <%# unless Time.now.strftime("%A %d") == spec.updated_at.strftime("%A %d") %>
-              <h2><%#= spec.updated_at.strftime("%A %d") %></h2>
-            <%# end %>
-              <h3><%= tag.name %></h3>
+              <h3><%= tag %></h3>
+              <p> <% @tags.where(name: tag).each do |t| %>
+                    <%= t.id %>
+                  <% end %>
+              </p>
           </div>
         <% end %>
       <% end %>

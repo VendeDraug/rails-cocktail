@@ -4,7 +4,7 @@ class Spec < ApplicationRecord
   belongs_to :user
   validates :title, presence: true
   validates :description, presence: true
-  validates :tags, presence: true
+  # validates :tags, presence: true
   #validates :tags, presence: true
   #validates :tags, format: { without: /['\/~`\!@#\$%\^&\*\(\)_\-\+=\{\}\[\]\|;:"\<\>,\.\?\\]/, message: ": Cannot contain special characters" }
 

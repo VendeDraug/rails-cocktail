@@ -25,7 +25,7 @@ spec1 = Spec.new(
   date: Date.today
 )
 spec1.user = user1
-# spec1.tag_list = tag1
+# spec1.tags = tag1
 spec1.save!
 
 
